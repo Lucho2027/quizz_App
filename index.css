@@ -1,5 +1,5 @@
 :root{
-    background: whitesmoke;
+    background:  #3F333E;
     }
 *{
     box-sizing: border-box;
@@ -41,3 +41,23 @@ header ul {
     margin-top: 50px
 }
   
+/* Color Theme Swatches in Hex */
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-1-hex { color: #BFB3B5; }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-2-hex { color: #8C8187; }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-3-hex { color: #594758; }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-4-hex { color: #3F333E; }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-5-hex { color: #D8D3D0; }
+
+/* Color Theme Swatches in RGBA */
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-1-rgba { color: rgba(191, 179, 181, 1); }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-2-rgba { color: rgba(140, 129, 135, 1); }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-3-rgba { color: rgba(89, 71, 88, 1); }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-4-rgba { color: rgba(63, 51, 62, 1); }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-5-rgba { color: rgba(216, 211, 208, 1); }
+
+/* Color Theme Swatches in HSLA */
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-1-hsla { color: hsla(349, 8, 72, 1); }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-2-hsla { color: hsla(327, 4, 52, 1); }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-3-hsla { color: hsla(303, 11, 31, 1); }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-4-hsla { color: hsla(305, 10, 22, 1); }
+.REAL-MADRID-CHAMPIONS-LEAGUE-2018-5-hsla { color: hsla(22, 9, 83, 1); }
