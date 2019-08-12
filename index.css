@@ -16,12 +16,16 @@
     align-items:center;
     max-width: 80rem;
     margin: 0 auto;
-    color: black;
+    color:whitesmoke;
 }
 body {
     display:flex;
     font-family: 'Roboto', sans-serif;
+    background-image: url('https://travel.zeelo.co/wp-content/uploads/2019/03/17102968487_d832ecaa4d_b.jpg');
+    background-size: cover; 
+    
   }
+ 
 
 .logo {
     height: 200px;
@@ -34,7 +38,7 @@ header ul li {
     font-size: 25px;
     text-transform: uppercase;
     display: inline;
-    color: black;
+    color: whitesmoke
 }
 header ul {
     text-align: right;
