@@ -4,19 +4,23 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width">
-    <title>Real Madrid trivia quizz</title>
+    <title>Real Madrid trivia quiz</title>
     <meta name="description" content="Test your knowledge on Real Madrid's history!">
     <link href="index.css" rel="stylesheet" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Metrophobic" rel="stylesheet">
+
+
+
 </head>
 
 <body>
-        <header role="banner">
+    <header role="banner">
         <div class="home-button">
             <a href="index.html">
                 <img class="logo" src="https://www.freeiconspng.com/uploads/real-madrid-logo-png-15.png"
                     alt="Real Madrid logo" />
             </a>
+            <h1>Real Madrid Trivia quiz</h1>
         </div>
         <div class="quiz-info">
             <ul>
@@ -27,34 +31,24 @@
         </div>
     </header>
     <main class="container">
-        <h1>Real Madrid Trivia quizz</h1>
+        <h1>Welcome to the Real Madrid Trivia quiz</h1>
         <div class="start-game">
             <p>Lets Test your knowledge on Real Madrid History!</p>
-            <button type="submit">Start Quiz!</button>
+            <button class="start-button" type="click">Start Quiz!</button>
         </div>
         <div class="quiz-question">
-            <form>
-                <fieldset>
-                    <legend class="question">When did Real Madrid first win the European Cup?</legend>
-                    <br>
-                    <input type="radio" name="answer-option" id="ans1" value="0">
-                    <label for="ans1">1960</label>
-                    <br>
-                    <input type="radio" name="answer-option" id="ans2" value="1">
-                    <label for="ans2">1950</label>
-                    <br>
-                    <input type="radio" name="answer-option" id="ans3" value="2">
-                    <label for="ans3">1956</label>
-                    <br>
-                    <input type="radio" name="answer-option" id="ans4" value="2">
-                    <label for="ans4">1945</label>
-                </fieldset>
-            </form>
+            
         </div>
+
         <div class="final-result">
-           <p>Test Scores:<span class="grade">0</span></p>     
+            <p>Test Scores:<span class="grade">0</span></p>
         </div>
+
     </main>
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+    <script type="text/javascript" src="questions.js"></script>
+
 </body>
 
 </html>

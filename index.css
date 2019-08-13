@@ -1,5 +1,5 @@
 :root{
-    background:  #3F333E;
+    background:rgba(3, 103, 191,0.85);
     }
 *{
     box-sizing: border-box;
@@ -31,7 +31,8 @@ body {
 header{
     display: flex;
     Background-color: rgba(3, 103, 191,0.30); 
-    
+    justify-content: space-around;
+    align-items: baseline, stretch;
 }
 header ul li {
     padding: 10px 20px;

@@ -1,15 +1,86 @@
+'use strict';
 let questionNumber = 0;
 let score = 0;
-
-function start() {
+// this function will be responsible for rendering the entry or welcome screen in the DOM
+function renderEntryScreen() {
     $('.start-game').show();
     $('.quiz-question').hide();
+    console.log('`renderEntryScreen` ran');
 }
-$(start)
-function listener() {
-    $('body').on('submit', '.start-game',event=>{
+
+//this function will be responsible for when users click on start quiz
+//esta funcion equivale al generateShppingItemsString
+function generateQuestionString(){
+    console.log("Generating the question");
+    if(questionNumber < STORE.length){
+    return `<div class="quiz-question-${questionNumber}">
+    <h2>${STORE[questionNumber].question}</h2>
+    <form>
+    <fieldset>
+    <label class="answerOption">
+    <input type="radio" value="${STORE[questionNumber].answers[0]}" name="answer" required>
+    <span>${STORE[questionNumber].answers[0]}</span>
+    </label>
+    <label class="answerOption">
+    <input type="radio" value="${STORE[questionNumber].answers[1]}" name="answer" required>
+    <span>${STORE[questionNumber].answers[1]}</span>
+    </label>
+    <label class="answerOption">
+    <input type="radio" value="${STORE[questionNumber].answers[2]}" name="answer" required>
+    <span>${STORE[questionNumber].answers[2]}</span>
+    </label>
+    <label class="answerOption">
+    <input type="radio" value="${STORE[questionNumber].answers[3]}" name="answer" required>
+    <span>${STORE[questionNumber].answers[3]}</span>
+    </label>
+    <button type="submit" class="submitButton">Submit</button>
+    </fieldset>
+    </form>
+    </div>`;
+} else {
+    renderResults();
+    restartQuiz();
+    $('.questionNumber').text(10)
+  }
+}
+ 
+// igual al renderShoppingList del ejemplo
+function handleStart() {
+    $('.start-button').click(function (event) {
+        $('.start-game').hide();
         $('.quiz-question').show();
-     });
-    
+    })
+    const questionString = generateQuestionString(STORE);
+    $('.quiz-question').html(questionString);
+
+
+    console.log('`handleStart` ran');
+}
+
+// this function will be responsible for letting the user know whether they got the answer right or wrong
+function handleAnswerClicked() {
+    console.log('`handleAnswerClicked` ran')
 
 }
+// this function will be responsible to let the user know they got the right answer
+function handleRightAnswer() {
+    console.log('`handleRightAnswer` ran')
+}
+
+//this function will be responsible to let the user know they got the wrong answer
+function handleWrongAnswer() {
+    console.log('`handleWrongAnswer` ran')
+}
+
+// this function will be the callback when the page loads. it's responsible for
+// initially rendering the quiz, and activating the individual functions
+// that handle the questions and when the user answer them.
+function handleQuiz() {
+    generateQuestionString();
+    renderEntryScreen();
+    handleStart();
+    handleAnswerClicked();
+    handleRightAnswer();
+    handleWrongAnswer();
+}
+$(handleQuiz);
