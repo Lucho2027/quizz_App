@@ -1,4 +1,4 @@
-const STORE = [
+const STORE =  [
     {
         question: 'When did Real Madrid first win the European Cup?',
 

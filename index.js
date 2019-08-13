@@ -76,8 +76,9 @@ function handleWrongAnswer() {
 // initially rendering the quiz, and activating the individual functions
 // that handle the questions and when the user answer them.
 function handleQuiz() {
-    generateQuestionString();
+    
     renderEntryScreen();
+    generateQuestionString();
     handleStart();
     handleAnswerClicked();
     handleRightAnswer();
