@@ -8,18 +8,18 @@ function renderEntryScreen() {
     console.log('`renderEntryScreen` ran');
 }
 function updateQuestionNumber() {
-    questionNumber ++;
-    $('.questionNumber').text(questionNumber+1);
+    questionNumber++;
+    $('.questionNumber').text(questionNumber + 1);
 }
 
 function updateScore() {
-    score ++;
-    $('.score').text(score+1);
+    score++;
+    $('.score').text(score);
 }
 //this function will be responsible for when users click on start quiz
 //esta funcion equivale al generateShppingItemsString
 function generateQuestionString() {
-    console.log("Generating the question",questionNumber);
+    console.log("Generating the question", questionNumber);
     if (questionNumber < STORE.length) {
         return `<div class="quiz-question-${questionNumber}">
     <h2>${STORE[questionNumber].question}</h2>
@@ -59,7 +59,7 @@ function handleStart() {
     })
     const questionString = generateQuestionString(STORE);
     $('.quiz-question').html(questionString);
-    
+
 
 
     console.log('`handleStart` ran');
@@ -74,13 +74,13 @@ function handleAnswerClicked() {
         let userAnswer = $('input:checked');
         let answer = userAnswer.val();
         let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-        console.log(answer,correctAnswer)
+        console.log(answer, correctAnswer)
         if (answer === correctAnswer) {
             userAnswer.parent().addClass('correct');
-            updateScore();        
+            updateScore();
         }
         else {
-            
+
         }
         updateQuestionNumber();
         const questionString = generateQuestionString(STORE);
@@ -88,7 +88,7 @@ function handleAnswerClicked() {
         console.log(score);
     });
     console.log('`handleAnswerClicked` ran');
-    
+
 }
 
 
