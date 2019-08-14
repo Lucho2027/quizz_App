@@ -78,28 +78,32 @@ function handleAnswerClicked() {
         if (answer === correctAnswer) {
             userAnswer.parent().addClass('correct');
             updateScore();
+            updateQuestionNumber();
+            const questionString = generateQuestionString(STORE);
+            $('.quiz-question').html(questionString);
         }
-        else {
+        else if (answer === undefined) {
+            alert('Please enter an answer!');
+            const questionString = generateQuestionString(STORE);
+            $('.quiz-question').html(questionString);
+
 
         }
-        updateQuestionNumber();
-        const questionString = generateQuestionString(STORE);
-        $('.quiz-question').html(questionString);
+        else {
+            updateQuestionNumber();
+        }
         console.log(score);
     });
     console.log('`handleAnswerClicked` ran');
 
 }
 
-
-function handleRightAnswer() {
-
-}
-
 //this function will be responsible to let the user know they got the wrong answer
 function handleWrongAnswer() {
+
     console.log('`handleWrongAnswer` ran')
 }
+
 
 // this function will be the callback when the page loads. it's responsible for
 // initially rendering the quiz, and activating the individual functions
@@ -110,7 +114,6 @@ function handleQuiz() {
     generateQuestionString();
     handleStart();
     handleAnswerClicked();
-    handleRightAnswer();
     handleWrongAnswer();
 }
 $(handleQuiz);
