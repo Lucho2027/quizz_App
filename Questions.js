@@ -24,7 +24,7 @@ const STORE =  [
     {
         question: 'Which Portugese soccer player has played for both Barcelona FC and Real Madrid?',
 
-        aswers: [
+        answers: [
             'Pepe',
             'Cristiano Ronaldo',
             'Luís Nazário de Lima Ronaldo',

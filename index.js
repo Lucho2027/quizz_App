@@ -7,13 +7,19 @@ function renderEntryScreen() {
     $('.quiz-question').hide();
     console.log('`renderEntryScreen` ran');
 }
+function updateQuestionNumber() {
+    questionNumber = questionNumber + 1;
+}
 
+function updateScore() {
+    score = score + 1;
+}
 //this function will be responsible for when users click on start quiz
 //esta funcion equivale al generateShppingItemsString
-function generateQuestionString(){
-    console.log("Generating the question");
-    if(questionNumber < STORE.length){
-    return `<div class="quiz-question-${questionNumber}">
+function generateQuestionString() {
+    console.log("Generating the question",question);
+    if (questionNumber < STORE.length) {
+        return `<div class="quiz-question-${questionNumber}">
     <h2>${STORE[questionNumber].question}</h2>
     <form>
     <fieldset>
@@ -37,13 +43,11 @@ function generateQuestionString(){
     </fieldset>
     </form>
     </div>`;
-} else {
-    renderResults();
-    restartQuiz();
-    $('.questionNumber').text(10)
-  }
+    } else {
+        $('.questionNumber').text(10)
+    }
 }
- 
+
 // igual al renderShoppingList del ejemplo
 function handleStart() {
     $('.start-button').click(function (event) {
@@ -58,13 +62,32 @@ function handleStart() {
 }
 
 // this function will be responsible for letting the user know whether they got the answer right or wrong
-function handleAnswerClicked() {
-    console.log('`handleAnswerClicked` ran')
-
-}
 // this function will be responsible to let the user know they got the right answer
+function handleAnswerClicked() {
+    $('.quiz-question').on('click', '.submitButton', function (event) {
+        console.log("made it to answer clicked")
+        event.preventDefault();
+        let userAnswer = $('input:checked');
+        let answer = userAnswer.val();
+        let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
+        console.log(answer,correctAnswer)
+        if (answer === correctAnswer) {
+            userAnswer.parent().addClass('correct');
+            updateScore();        
+        }
+        else {
+            
+        }
+        updateQuestionNumber();
+        const questionString = generateQuestionString(STORE);
+        $('.quiz-question').html(questionString);
+    });
+    console.log('`handleAnswerClicked` ran');
+}
+
+
 function handleRightAnswer() {
-    console.log('`handleRightAnswer` ran')
+
 }
 
 //this function will be responsible to let the user know they got the wrong answer
@@ -76,7 +99,7 @@ function handleWrongAnswer() {
 // initially rendering the quiz, and activating the individual functions
 // that handle the questions and when the user answer them.
 function handleQuiz() {
-    
+
     renderEntryScreen();
     generateQuestionString();
     handleStart();
