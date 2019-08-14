@@ -17,7 +17,7 @@ function updateScore() {
 //this function will be responsible for when users click on start quiz
 //esta funcion equivale al generateShppingItemsString
 function generateQuestionString() {
-    console.log("Generating the question",question);
+    console.log("Generating the question",questionNumber);
     if (questionNumber < STORE.length) {
         return `<div class="quiz-question-${questionNumber}">
     <h2>${STORE[questionNumber].question}</h2>
@@ -83,6 +83,7 @@ function handleAnswerClicked() {
         $('.quiz-question').html(questionString);
     });
     console.log('`handleAnswerClicked` ran');
+    console.log(updateQuestionNumber,updateScore);
 }
 
 
