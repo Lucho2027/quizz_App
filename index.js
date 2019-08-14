@@ -8,11 +8,13 @@ function renderEntryScreen() {
     console.log('`renderEntryScreen` ran');
 }
 function updateQuestionNumber() {
-    questionNumber = questionNumber + 1;
+    questionNumber ++;
+    $('.questionNumber').text(questionNumber+1);
 }
 
 function updateScore() {
-    score = score + 1;
+    score ++;
+    $('.score').text(score+1);
 }
 //this function will be responsible for when users click on start quiz
 //esta funcion equivale al generateShppingItemsString
@@ -53,9 +55,11 @@ function handleStart() {
     $('.start-button').click(function (event) {
         $('.start-game').hide();
         $('.quiz-question').show();
+        $('.questionNumber').text(1);
     })
     const questionString = generateQuestionString(STORE);
     $('.quiz-question').html(questionString);
+    
 
 
     console.log('`handleStart` ran');
@@ -81,9 +85,10 @@ function handleAnswerClicked() {
         updateQuestionNumber();
         const questionString = generateQuestionString(STORE);
         $('.quiz-question').html(questionString);
+        console.log(score);
     });
     console.log('`handleAnswerClicked` ran');
-    console.log(updateQuestionNumber,updateScore);
+    
 }
 
 
