@@ -86,11 +86,11 @@ function handleAnswerClicked() {
             alert('Please enter an answer!');
             const questionString = generateQuestionString(STORE);
             $('.quiz-question').html(questionString);
-
-
         }
         else {
             updateQuestionNumber();
+            const questionString = generateQuestionString(STORE);
+            $('.quiz-question').html(questionString);
         }
         console.log(score);
     });
@@ -99,10 +99,6 @@ function handleAnswerClicked() {
 }
 
 //this function will be responsible to let the user know they got the wrong answer
-function handleWrongAnswer() {
-
-    console.log('`handleWrongAnswer` ran')
-}
 
 
 // this function will be the callback when the page loads. it's responsible for
@@ -114,6 +110,5 @@ function handleQuiz() {
     generateQuestionString();
     handleStart();
     handleAnswerClicked();
-    handleWrongAnswer();
-}
+    }
 $(handleQuiz);
