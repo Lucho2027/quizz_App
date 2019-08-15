@@ -5,7 +5,7 @@ let score = 0;
 function renderEntryScreen() {
     $('.start-game').show();
     $('.quiz-question').hide();
-   
+
 }
 function updateQuestionNumber() {
     questionNumber++;
@@ -19,7 +19,7 @@ function updateScore() {
 //this function will be responsible for when users click on start quiz
 //esta funcion equivale al generateShppingItemsString
 function generateQuestionString() {
-    
+
     if (questionNumber < STORE.length) {
         return `<div class="quiz-question-${questionNumber}">
     <h2>${STORE[questionNumber].question}</h2>
@@ -48,7 +48,10 @@ function generateQuestionString() {
     } else {
         $('.questionNumber').text(10)
         $('.quiz-question').html(resultPrompt());
- }
+        handleStartOver();
+
+
+    }
 }
 function generateQuestion() {
     const questionString = generateQuestionString(STORE);
@@ -64,7 +67,7 @@ function handleStart() {
         $('.questionNumber').text(1);
     })
     generateQuestion();
-    
+
 }
 
 
@@ -77,12 +80,12 @@ function handleAnswerClicked() {
         let userAnswer = $('input:checked');
         let answer = userAnswer.val();
         let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
-        
+
         if (answer === correctAnswer) {
             updateScore();
             updateQuestionNumber();
             generateQuestion()
-            alert(`${correctAnswer} is the right answer!`)
+
         }
         else if (answer === undefined) {
             alert('Please enter an answer!');
@@ -90,15 +93,15 @@ function handleAnswerClicked() {
         }
 
         else if (answer != correctAnswer) {
-            alert(`Try Again, the right answer is  ${correctAnswer}`)
+
             updateQuestionNumber();
             generateQuestion();
 
-            
+
         }
-      
+
     });
-    
+
 }
 function resultPrompt() {
     let result = (score / questionNumber) * 100;
@@ -109,8 +112,22 @@ function resultPrompt() {
         <p> You have answered <span class="grade">${score}</span> correctly, out of 10 questions<p>
         <button type="submit" class="restart-button">Start Over!</button></div>`;
     }
-    
-   
+
+
+}
+function handleStartOver() {
+    $('.restart-button').click(function (event) {
+        score = 0;
+        $('.score').text(score);
+        questionNumber = 0;
+        $('.questionNumber').text(questionNumber);
+        $('.start-game').show();
+        $('.quiz-question').hide();
+        generateQuestion();
+
+
+    })
+
 }
 
 
@@ -126,9 +143,10 @@ function handleQuiz() {
     renderEntryScreen();
     generateQuestionString();
     handleStart();
-    handleAnswerClicked(); 
-    resultPrompt();
-      
-      
+    handleAnswerClicked();
+
+
+
+
 }
 $(handleQuiz);
