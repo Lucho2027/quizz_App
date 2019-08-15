@@ -47,7 +47,14 @@ function generateQuestionString() {
     </div>`;
     } else {
         $('.questionNumber').text(10)
+        $('.quiz-question').html(resultPrompt());
+        
     }
+}
+function generateQuestion() {
+    const questionString = generateQuestionString(STORE);
+    $('.quiz-question').html(questionString);
+
 }
 
 // igual al renderShoppingList del ejemplo
@@ -57,11 +64,7 @@ function handleStart() {
         $('.quiz-question').show();
         $('.questionNumber').text(1);
     })
-    const questionString = generateQuestionString(STORE);
-    $('.quiz-question').html(questionString);
-
-
-
+    generateQuestion();
     console.log('`handleStart` ran');
 }
 
@@ -69,34 +72,54 @@ function handleStart() {
 // this function will be responsible to let the user know they got the right answer
 function handleAnswerClicked() {
     $('.quiz-question').on('click', '.submitButton', function (event) {
-        console.log("made it to answer clicked")
+
         event.preventDefault();
         let userAnswer = $('input:checked');
         let answer = userAnswer.val();
         let correctAnswer = `${STORE[questionNumber].correctAnswer}`;
         console.log(answer, correctAnswer)
         if (answer === correctAnswer) {
-            userAnswer.parent().addClass('correct');
             updateScore();
             updateQuestionNumber();
-            const questionString = generateQuestionString(STORE);
-            $('.quiz-question').html(questionString);
+            generateQuestion()
         }
         else if (answer === undefined) {
             alert('Please enter an answer!');
-            const questionString = generateQuestionString(STORE);
-            $('.quiz-question').html(questionString);
+            generateQuestion()
         }
-        else {
+
+        else if (answer != correctAnswer) {
             updateQuestionNumber();
-            const questionString = generateQuestionString(STORE);
-            $('.quiz-question').html(questionString);
+            generateQuestion();
+            console.log("made it to wrong answer clicked")
         }
+
+
         console.log(score);
     });
     console.log('`handleAnswerClicked` ran');
 
+
 }
+function resultPrompt() {
+    console.log("made it to the end now we here!", questionNumber)
+    let result = (score / questionNumber) * 100;
+    if (questionNumber === 10) {
+        return `
+        <p>Test Scores:<span class="grade">${result}</span></p>
+        <button type="submit" class="restartButton">Start Over!</button>`;
+
+    }
+    $('.body').on('click', '.restartButton', function (event) {
+        handleStart()
+    })
+    
+}
+
+
+
+
+
 
 //this function will be responsible to let the user know they got the wrong answer
 
@@ -105,10 +128,11 @@ function handleAnswerClicked() {
 // initially rendering the quiz, and activating the individual functions
 // that handle the questions and when the user answer them.
 function handleQuiz() {
-
+    generateQuestion()
     renderEntryScreen();
     generateQuestionString();
     handleStart();
-    handleAnswerClicked();
-    }
+    handleAnswerClicked(); 
+    
+}
 $(handleQuiz);
