@@ -23,7 +23,7 @@ function generateQuestionString() {
     if (questionNumber < STORE.length) {
         return `<div class="quiz-question-${questionNumber}">
     <h2>${STORE[questionNumber].question}</h2>
-    <form>
+    <form id="form">
     <fieldset>
     <label class="answerOption">
     <input type="radio" value="${STORE[questionNumber].answers[0]}" name="answer" required>
@@ -59,7 +59,6 @@ function generateQuestion() {
 
 }
 
-// igual al renderShoppingList del ejemplo
 function handleStart() {
     $('.start-button').click(function (event) {
         $('.start-game').hide();
@@ -74,7 +73,7 @@ function handleStart() {
 // this function will be responsible for letting the user know whether they got the answer right or wrong
 // this function will be responsible to let the user know they got the right answer
 function handleAnswerClicked() {
-    $('.quiz-question').on('click', '.submitButton', function (event) {
+    $('.quiz-question').on('submit', '#form', function (event) {
 
         event.preventDefault();
         let userAnswer = $('input:checked');
@@ -84,25 +83,72 @@ function handleAnswerClicked() {
         if (answer === correctAnswer) {
             updateScore();
             updateQuestionNumber();
-            generateQuestion()
+            rightAnswer();
+            
 
         }
-        else if (answer === undefined) {
-            alert('Please enter an answer!');
-            generateQuestion()
-        }
-
+       
         else if (answer != correctAnswer) {
-
+            wrongAnswer()
             updateQuestionNumber();
-            generateQuestion();
+            
 
 
         }
 
     });
+}
+
+function rightAnswer() {
+    let html =`<div class="right-answer">
+    <p>You were Right! You have answered ${score} questions correctly out of ${questionNumber}. Keep it up! </p>
+    <button type="button" class="continue-button">Next Question</button></div>`
+
+    $('.container').append(html);
+    $('.quiz-question').hide();
+
 
 }
+
+function handleRightAnswer() {
+    
+    $('body').on('click','.continue-button',function (event) {
+        event.preventDefault();
+        $('.right-answer').hide();
+        $('.start-game').hide();
+        $('.quiz-question').show();
+        generateQuestion();
+        console.log(questionNumber);
+
+    })
+
+}
+function wrongAnswer() {
+    let html =`<div class="wrong-answer">
+    <p>You were Wrong! You have answered ${score} questions correctly out of ${questionNumber}. Keep it up! </p>
+    <button type="button" class="continue-button">Next Question</button></div>`
+
+    $('.container').append(html);
+    $('.quiz-question').hide();
+
+
+}
+
+function handleWrongAnswer() {
+    
+    $('body').on('click','.continue-button',function (event) {
+        event.preventDefault();
+        $('.wrong-answer').hide();
+        $('.start-game').hide();
+        $('.quiz-question').show();
+        generateQuestion();
+        console.log(questionNumber);
+
+    })
+
+}
+
+
 function resultPrompt() {
     let result = (score / questionNumber) * 100;
     if (questionNumber >= 10) {
@@ -115,6 +161,7 @@ function resultPrompt() {
 
 
 }
+
 function handleStartOver() {
     $('.restart-button').click(function (event) {
         score = 0;
@@ -144,6 +191,8 @@ function handleQuiz() {
     generateQuestionString();
     handleStart();
     handleAnswerClicked();
+    handleRightAnswer();
+    handleWrongAnswer()
 
 
 
