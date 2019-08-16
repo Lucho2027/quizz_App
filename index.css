@@ -1,54 +1,161 @@
-:root{
-    background:rgba(3, 103, 191,0.85);
-    }
-*{
+
+* {
     box-sizing: border-box;
-    }
+  }
+  
+  body {
+    display: flex;
+    flex-direction:column;
+    font-family: "Montserrat",helvetica;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    background-image: url('https://travel.zeelo.co/wp-content/uploads/2019/03/17102968487_d832ecaa4d_b.jpg');
+    background-size: stretch; 
+    
+  }
+header{
+    display:flex;
+    flex-direction: row;
+    text-align: center;
+    background-color:  whitesmoke;
+    color:black;
+}
+
+.logo > img {
+    width: 50px;
+  }
+
+header ul {
+    display: flex;
+    list-style: none;
+    text-transform: uppercase;  
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;    
+    padding:0px;
+    
+
+}
+
 .container{ 
-    width: 100vw;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content:center;
-    align-items:center;
-    max-width: 80rem;
-    margin: 0 auto;
-    color:whitesmoke;
-}
-body {
-    display:flex;
-    font-family: 'Roboto', sans-serif;
-    background-image: url('https://travel.zeelo.co/wp-content/uploads/2019/03/17102968487_d832ecaa4d_b.jpg');
-    background-size: cover; 
-    flex-direction: column;
-}
-
-.logo {
-    height: 200px;
-    width: 150px;
-    margin: 10px;
-}
-header{
-    display: flex;
-    Background-color: rgba(3, 103, 191,0.30); 
-    justify-content: space-around;
-    align-items: baseline, stretch;
-}
-header ul li {
-    padding: 10px 20px;
-    list-style: none;
     text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
-    display: inline;
-    color: whitesmoke;
+    
+    font-size: auto;   
    
 }
-header ul {
-    text-align: right;
-    margin-top: 50px
+.start-game{ 
+    display: flex;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+    padding:15px;
+    margin:60px;
+    border-radius: 5px;
 }
+
+.start-button{
+    display: flex;
+    height: auto;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    justify-content:center;
+    border-radius: 5px;   
+}
+.quiz-question{ 
+    display: flex;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+    padding:15px;
+    margin:60px;
+    border-radius: 5px;
+}
+.submit-button{
+    display: flex;
+    height: auto;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    justify-content:center;
+    border-radius: 5px;   
+}
+.wrong-answer{ 
+    display: flex;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+    padding:15px;
+    margin:60px;
+    border-radius: 5px;
+}
+.right-answer{ 
+    display: flex;
+    flex-wrap: wrap;
+    background-color: whitesmoke;
+    flex-direction: column;
+    justify-content:center;
+    text-align: center;
+    padding:15px;
+    margin:60px;
+    border-radius: 5px;
+}
+.continue-button{
+    display: flex;
+    height: auto;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    justify-content:center;
+    border-radius: 5px;   
+}
+.answerOption{
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    flex-wrap: wrap;
+    font-size: auto;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    background: #F2B705;
+    border: 0;
+    cursor: pointer;
+    margin:3px;
+    padding:5px;
+    border-radius: 3px;
+    
+}
+.form{
+    display: flex;
+    justify-content:center;
+    text-align: center;
+}
+
+button[type="submit"]{
+    height: auto;
+    font-size: auto;
+    font-weight: 500;
+    text-align: center;
+    color: white;
+    background: #F2B705;
+    cursor: pointer;
+    margin-bottom: 0;
+    
+  }
+
   
+
 /* Color Theme Swatches in Hex */
 .REAL-MADRID-CHAMPIONS-LEAGUE-2018-1-hex { color: #BFB3B5; }
 .REAL-MADRID-CHAMPIONS-LEAGUE-2018-2-hex { color: #8C8187; }
@@ -63,13 +170,6 @@ header ul {
 .REAL-MADRID-CHAMPIONS-LEAGUE-2018-4-rgba { color: rgba(63, 51, 62, 1); }
 .REAL-MADRID-CHAMPIONS-LEAGUE-2018-5-rgba { color: rgba(216, 211, 208, 1); }
 
-/* Color Theme Swatches in HSLA */
-.REAL-MADRID-CHAMPIONS-LEAGUE-2018-1-hsla { color: hsla(349, 8, 72, 1); }
-.REAL-MADRID-CHAMPIONS-LEAGUE-2018-2-hsla { color: hsla(327, 4, 52, 1); }
-.REAL-MADRID-CHAMPIONS-LEAGUE-2018-3-hsla { color: hsla(303, 11, 31, 1); }
-.REAL-MADRID-CHAMPIONS-LEAGUE-2018-4-hsla { color: hsla(305, 10, 22, 1); }
-.REAL-MADRID-CHAMPIONS-LEAGUE-2018-5-hsla { color: hsla(22, 9, 83, 1); }
-
 /* Color Theme Swatches in Hex */
 .Flavour-1-hex { color: #0468BF; }
 .Flavour-2-hex { color: #05AFF2; }
@@ -83,10 +183,3 @@ header ul {
 .Flavour-3-rgba { color: rgba(242, 182, 4, 1); }
 .Flavour-4-rgba { color: rgba(242, 135, 4, 1); }
 .Flavour-5-rgba { color: rgba(191, 53, 3, 1); }
-
-/* Color Theme Swatches in HSLA */
-.Flavour-1-hsla { color: hsla(208, 96, 38, 1); }
-.Flavour-2-hsla { color: hsla(196, 96, 48, 1); }
-.Flavour-3-hsla { color: hsla(45, 96, 48, 1); }
-.Flavour-4-hsla { color: hsla(33, 96, 48, 1); }
-.Flavour-5-hsla { color: hsla(16, 96, 38, 1); }
