@@ -89,8 +89,9 @@ function handleAnswerClicked() {
         }
        
         else if (answer != correctAnswer) {
-            wrongAnswer()
+            
             updateQuestionNumber();
+            wrongAnswer();
             
 
 
@@ -142,7 +143,7 @@ function handleWrongAnswer() {
         $('.start-game').hide();
         $('.quiz-question').show();
         generateQuestion();
-        console.log(questionNumber);
+        
 
     })
 
