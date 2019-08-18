@@ -215,7 +215,29 @@ footer{
 
 }
 
-  
+@media (max-width: 335px){
+    .quiz-question{ 
+        font-size:8px;;
+    }  
+    header{
+        font-size:8px;
+    } 
+    .wrong-answer{ 
+        font-size:8px;;
+    }
+    
+    
+    .right-answer{ 
+        font-size:8px;
+    }
+    
+    .answer-area{
+        font-size:8px;
+    }
+     
+    
+
+}
 @media (max-width: 697px){
     
     footer{
