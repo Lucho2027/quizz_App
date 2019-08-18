@@ -27,7 +27,7 @@ const STORE =  [
         answers: [
             'Pepe',
             'Cristiano Ronaldo',
-            'Luís Nazário de Lima Ronaldo',
+            'Luís Nazário Ronaldo',
             'Luis Figo'
         ],
         correctAnswer: 'Luis Figo'
@@ -50,7 +50,7 @@ const STORE =  [
             'Raúl Gonzalez Blanco',
             'Alfredo Di Stéfano',
             'Ference Puskás',
-            'Luís Nazário de Lima Ronaldo',
+            'Luís Nazário Ronaldo',
         ],
         correctAnswer: 'Alfredo Di Stéfano'
     },

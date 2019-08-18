@@ -1,30 +1,33 @@
 'use strict';
 let questionNumber = 0;
 let score = 0;
+
 // this function will be responsible for rendering the entry or welcome screen in the DOM
 function renderEntryScreen() {
     $('.start-game').show();
     $('.quiz-question').hide();
 
 }
+//the functions below will update the number of question and the score
 function updateQuestionNumber() {
     questionNumber++;
-    $('.questionNumber').text(questionNumber + 1);
+    $('.questionNumber').text(questionNumber);
+
 }
 
 function updateScore() {
     score++;
     $('.score').text(score);
 }
-//this function will be responsible for when users click on start quiz
-//esta funcion equivale al generateShppingItemsString
+//this function will be responsible for pulling the information from array and building the html structure to present the question to the user
+
 function generateQuestionString() {
 
     if (questionNumber < STORE.length) {
         return `<div class="quiz-question-${questionNumber}">
     <h2>${STORE[questionNumber].question}</h2>
     <form id="form">
-    <fieldset>
+    <fieldset class="answer-area">
     <label class="answerOption">
     <input type="radio" value="${STORE[questionNumber].answers[0]}" name="answer" required>
     <span>${STORE[questionNumber].answers[0]}</span>
@@ -53,11 +56,13 @@ function generateQuestionString() {
 
     }
 }
+// This function is to call the string generated and show the string on the DOM
 function generateQuestion() {
     const questionString = generateQuestionString(STORE);
     $('.quiz-question').html(questionString);
 
 }
+//this function handles the start of the quiz, it shows and hide the sections needed and generates the question
 
 function handleStart() {
     $('.start-button').click(function (event) {
@@ -84,25 +89,25 @@ function handleAnswerClicked() {
             updateScore();
             updateQuestionNumber();
             rightAnswer();
-            
+
 
         }
-       
+
         else if (answer != correctAnswer) {
-            
+
+
             updateQuestionNumber();
             wrongAnswer();
-            
-
-
         }
 
     });
 }
 
+//the function below generates the html elements needed to present feedback to the user when a question has been answered right
+
 function rightAnswer() {
-    let html =`<div class="right-answer">
-    <p>You were Right! You have answered ${score} questions correctly out of ${questionNumber}. Keep it up! </p>
+    let html = `<div class="right-answer">
+    <h2>You were Right! You have answered ${score} questions correctly out of ${questionNumber}. Keep it up! </h2>
     <button type="button" class="continue-button">Next Question</button></div>`
 
     $('.container').append(html);
@@ -110,23 +115,27 @@ function rightAnswer() {
 
 
 }
+//this function handles the sections of the html that will be shown the the user continues with the quiz after a question that has been asnswered right, it also calls next question
 
 function handleRightAnswer() {
-    
-    $('body').on('click','.continue-button',function (event) {
+
+    $('body').on('click', '.continue-button', function (event) {
         event.preventDefault();
         $('.right-answer').hide();
         $('.start-game').hide();
         $('.quiz-question').show();
         generateQuestion();
-        console.log(questionNumber);
+
+
 
     })
-
 }
+
+
+//the function below generates the html elements needed to present feedback to the user when a question has been answered wrong
 function wrongAnswer() {
-    let html =`<div class="wrong-answer">
-    <p>You were Wrong! You have answered ${score} questions correctly out of ${questionNumber}. Keep it up! </p>
+    let html = `<div class="wrong-answer">
+     <h2>You were Wrong! You have answered ${score} questions correctly out of ${questionNumber}. </h2>
     <button type="button" class="continue-button">Next Question</button></div>`
 
     $('.container').append(html);
@@ -134,21 +143,23 @@ function wrongAnswer() {
 
 
 }
+//this function handles the sections of the html that will be shown the the user continues with the quiz after a question that has been asnswered wrong, it also calls next question
 
 function handleWrongAnswer() {
-    
-    $('body').on('click','.continue-button',function (event) {
+
+    $('body').on('click', '.continue-button', function (event) {
         event.preventDefault();
         $('.wrong-answer').hide();
         $('.start-game').hide();
         $('.quiz-question').show();
         generateQuestion();
-        
+
+
 
     })
 
 }
-
+//the function below generates the html elements needed to present results to the user once all of the questions have been answered
 
 function resultPrompt() {
     let result = (score / questionNumber) * 100;
@@ -157,12 +168,12 @@ function resultPrompt() {
         <div class="final-result">
         <p>You were <span class="grade">${result} %</span> accurate!</p><br>
         <p> You have answered <span class="grade">${score}</span> correctly, out of 10 questions<p>
-        <button type="submit" class="restart-button">Start Over!</button></div>`;
+        <button type="button" class="restart-button">Start Over!</button></div>`;
     }
 
 
 }
-
+//this functions calls the html generated and listens for the restart of the game telling the DOM what sections to hide and which one to show.
 function handleStartOver() {
     $('.restart-button').click(function (event) {
         score = 0;
@@ -177,10 +188,6 @@ function handleStartOver() {
     })
 
 }
-
-
-
-//this function will be responsible to let the user know they got the wrong answer
 
 
 // this function will be the callback when the page loads. it's responsible for
